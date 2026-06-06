@@ -1,0 +1,1603 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Александр и Мария | Wedding Invitation</title>
+  <meta name="description" content="Современный свадебный сайт-приглашение с RSVP, таймером, таймлайном и живой галереей гостей." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            ivory: '#F9F6F0',
+            silk: '#EFE7DD',
+            sage: '#AEB8A2',
+            rose: '#D7A9A1',
+            wine: '#8A4B55',
+            ink: '#242424',
+            pearl: '#FFFFFFCC',
+          },
+          boxShadow: {
+            soft: '0 22px 70px rgba(40, 33, 28, 0.12)',
+            lift: '0 18px 40px rgba(36, 36, 36, 0.16)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --paper: #fbf8f3;
+      --line: rgba(36, 36, 36, .12);
+      --champagne: #c7a97b;
+      --deep: #28333a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(40, 51, 58, .035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(40, 51, 58, .035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+      color: #242424;
+      font-family: "Montserrat", sans-serif;
+      text-rendering: geometricPrecision;
+    }
+
+    body::selection {
+      background: #d7a9a1;
+      color: #fff;
+    }
+
+    .hero-media {
+      background-image:
+        linear-gradient(90deg, rgba(16, 20, 20, .78), rgba(16, 20, 20, .28) 52%, rgba(16, 20, 20, .66)),
+        linear-gradient(180deg, rgba(20, 18, 16, .22), rgba(20, 18, 16, .18) 45%, rgba(20, 18, 16, .72)),
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2400&q=85");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(255, 255, 255, .24);
+      pointer-events: none;
+    }
+
+    .hero-frame::before,
+    .hero-frame::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 1px;
+      background: rgba(255, 255, 255, .62);
+    }
+
+    .hero-frame::before {
+      left: 24px;
+      top: 24px;
+    }
+
+    .hero-frame::after {
+      right: 24px;
+      bottom: 24px;
+    }
+
+    .hero-emblem {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .42);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(16px);
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+    }
+
+    .hero-info {
+      border-top: 1px solid rgba(255, 255, 255, .24);
+      background: linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+      backdrop-filter: blur(18px);
+    }
+
+    .luxury-panel {
+      border: 1px solid rgba(36, 36, 36, .11);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,255,255,.5)),
+        linear-gradient(180deg, rgba(199,169,123,.18), transparent);
+      box-shadow: 0 28px 80px rgba(40, 51, 58, .12);
+    }
+
+    .soft-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .soft-button::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-110%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
+      transition: transform .7s var(--ease);
+    }
+
+    .soft-button:hover::after {
+      transform: translateX(110%);
+    }
+
+    .glass-line {
+      border: 1px solid rgba(255, 255, 255, .42);
+      background: rgba(255, 255, 255, .16);
+      backdrop-filter: blur(18px);
+    }
+
+    .noise {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .noise::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 280 280' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    .figurine-scene {
+      perspective: 1400px;
+      transform-style: preserve-3d;
+    }
+
+    .figurine-scene::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 44%;
+      width: min(86vw, 760px);
+      height: min(78vw, 560px);
+      border: 1px solid rgba(138, 75, 85, .18);
+      border-bottom: 0;
+      border-radius: 999px 999px 0 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.54), rgba(255,255,255,0)),
+        repeating-linear-gradient(90deg, rgba(199,169,123,.12) 0 1px, transparent 1px 52px);
+      transform: translate(-50%, -50%) rotateX(8deg) translateZ(-130px);
+    }
+
+    .figurine-scene::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 15%;
+      width: min(76vw, 720px);
+      height: 82px;
+      border-radius: 999px;
+      background: radial-gradient(ellipse at center, rgba(36,36,36,.2), transparent 68%);
+      transform: translateX(-50%) rotateX(68deg) translateZ(-95px);
+      filter: blur(2px);
+    }
+
+    .figurine {
+      transform-style: preserve-3d;
+      transform-origin: 50% 88%;
+      filter: drop-shadow(0 26px 24px rgba(36, 36, 36, .18));
+      will-change: transform, opacity;
+    }
+
+    #groomFigure {
+      transform: translate(calc(-50% - 86px), -50%);
+    }
+
+    #brideFigure {
+      transform: translate(calc(-50% + 86px), -50%);
+    }
+
+    .cake-topper {
+      position: relative;
+      width: min(31vw, 230px);
+      aspect-ratio: 1 / 1.34;
+      transform: translateZ(24px);
+    }
+
+    .cake-topper::before {
+      content: "";
+      position: absolute;
+      inset: 9% 9% 2%;
+      border: 7px solid #fffaf4;
+      border-radius: 999px 999px 26px 26px;
+      background: linear-gradient(150deg, rgba(255, 255, 255, .86), rgba(244, 235, 225, .76));
+      box-shadow: inset 0 0 0 1px rgba(36, 36, 36, .08);
+      transform: translateZ(-7px);
+    }
+
+    .topper-head {
+      position: absolute;
+      left: 50%;
+      top: 11%;
+      width: 26%;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: linear-gradient(145deg, #fff9f0, #d8c5b6);
+      box-shadow: inset -10px -8px 18px rgba(94, 65, 52, .11);
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .topper-neck {
+      position: absolute;
+      left: 50%;
+      top: 32%;
+      width: 10%;
+      height: 9%;
+      border-radius: 999px;
+      background: #ead8c7;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .topper-body {
+      position: absolute;
+      left: 50%;
+      bottom: 9%;
+      width: 48%;
+      height: 58%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .groom-topper .topper-body {
+      border-radius: 34px 34px 16px 16px;
+      background: linear-gradient(120deg, #262a29, #4e5750);
+      clip-path: polygon(21% 0, 79% 0, 92% 100%, 8% 100%);
+    }
+
+    .groom-topper .topper-detail {
+      position: absolute;
+      left: 50%;
+      top: 39%;
+      width: 22%;
+      height: 26%;
+      border-radius: 0 0 999px 999px;
+      background: #fffaf4;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .groom-topper .topper-detail::before,
+    .groom-topper .topper-detail::after {
+      content: "";
+      position: absolute;
+      top: 7%;
+      width: 45%;
+      height: 24%;
+      background: #242424;
+    }
+
+    .groom-topper .topper-detail::before {
+      left: -30%;
+      clip-path: polygon(0 50%, 100% 0, 100% 100%);
+    }
+
+    .groom-topper .topper-detail::after {
+      right: -30%;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+    }
+
+    .bride-topper::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 4%;
+      width: 54%;
+      height: 50%;
+      border-radius: 999px 999px 42px 42px;
+      background: linear-gradient(145deg, rgba(255,255,255,.58), rgba(238,226,217,.28));
+      transform: translateX(-50%) translateZ(2px);
+      z-index: 1;
+    }
+
+    .bride-topper .topper-body {
+      width: 70%;
+      height: 61%;
+      border-radius: 999px 999px 24px 24px;
+      background: linear-gradient(145deg, #fffdf8, #eadfd6);
+      clip-path: polygon(50% 0, 84% 100%, 16% 100%);
+    }
+
+    .bride-topper .topper-detail {
+      position: absolute;
+      left: 50%;
+      top: 39%;
+      width: 28%;
+      height: 18%;
+      border-radius: 999px;
+      border: 1px solid rgba(138, 75, 85, .2);
+      background:
+        radial-gradient(circle at 26% 50%, #d7a9a1 0 20%, transparent 22%),
+        radial-gradient(circle at 50% 48%, #e8c7bd 0 22%, transparent 24%),
+        radial-gradient(circle at 72% 52%, #aeb8a2 0 19%, transparent 21%),
+        rgba(255, 255, 255, .72);
+      transform: translateX(-50%);
+      z-index: 4;
+    }
+
+    .cake-topper-shine {
+      position: absolute;
+      inset: 9% 9% 2%;
+      border-radius: 999px 999px 26px 26px;
+      background: linear-gradient(108deg, rgba(255,255,255,.55), transparent 38%, rgba(36,36,36,.08) 78%);
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .paper-stand {
+      width: 50%;
+      height: 20px;
+      margin: -4px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e7d8ca, #fff9f2, #ceb9a7);
+      transform: rotateX(74deg) translateZ(-4px);
+      box-shadow: 0 22px 34px rgba(36, 36, 36, .2);
+    }
+
+    .cake-base {
+      position: absolute;
+      left: 50%;
+      bottom: 8%;
+      width: min(82vw, 680px);
+      height: 210px;
+      transform: translateX(-50%) rotateX(6deg) translateZ(-54px);
+      transform-style: preserve-3d;
+      z-index: 0;
+    }
+
+    .cake-tier {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid rgba(138, 75, 85, .13);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(239,231,221,.92)),
+        repeating-linear-gradient(90deg, transparent 0 18px, rgba(199,169,123,.12) 18px 19px);
+      box-shadow: 0 26px 70px rgba(40, 51, 58, .13);
+    }
+
+    .cake-tier.top {
+      bottom: 118px;
+      width: 48%;
+      height: 74px;
+      border-radius: 42px 42px 18px 18px;
+    }
+
+    .cake-tier.middle {
+      bottom: 58px;
+      width: 66%;
+      height: 86px;
+      border-radius: 52px 52px 20px 20px;
+    }
+
+    .cake-tier.bottom {
+      bottom: 0;
+      width: 88%;
+      height: 98px;
+      border-radius: 60px 60px 24px 24px;
+    }
+
+    .cake-ribbon {
+      position: absolute;
+      left: 50%;
+      bottom: 45px;
+      width: 80%;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #8a4b55, #c7a97b, #8a4b55);
+      transform: translateX(-50%) translateZ(18px);
+      opacity: .88;
+    }
+
+    .joined-glow {
+      opacity: 0;
+      transform: translateZ(-60px) scale(.84);
+      will-change: transform, opacity;
+    }
+
+    .count-cell {
+      min-width: 96px;
+      border: 1px solid rgba(36, 36, 36, .12);
+      background: rgba(255, 255, 255, .56);
+      backdrop-filter: blur(16px);
+    }
+
+    .countdown-section .count-cell {
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 26px 70px rgba(0,0,0,.18);
+    }
+
+    .rsvp-choice input,
+    .drink-choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .rsvp-choice span,
+    .drink-choice span {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(36, 36, 36, .14);
+      background: rgba(255,255,255,.56);
+      padding: 12px 16px;
+      transition: border-color .35s var(--ease), background .35s var(--ease), transform .35s var(--ease), color .35s var(--ease);
+    }
+
+    .rsvp-choice input:checked + span,
+    .drink-choice input:checked + span {
+      border-color: #8a4b55;
+      background: #8a4b55;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .timeline-item {
+      position: relative;
+      transition: transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    .timeline-grid {
+      position: relative;
+    }
+
+    .timeline-grid::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: -12px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(138, 75, 85, .36), transparent);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: -16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #c7a97b;
+      box-shadow: 0 0 0 7px rgba(199, 169, 123, .14);
+    }
+
+    .timeline-item.is-active {
+      transform: translateY(-6px);
+      border-color: rgba(138, 75, 85, .42);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 22px 60px rgba(40, 51, 58, .12);
+    }
+
+    .palette-card {
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    .palette-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(40, 51, 58, .13);
+    }
+
+    .masonry {
+      column-count: 1;
+      column-gap: 18px;
+    }
+
+    @media (min-width: 640px) {
+      .masonry {
+        column-count: 2;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .masonry {
+        column-count: 3;
+      }
+    }
+
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 18px;
+      overflow: hidden;
+      background: #fff;
+      opacity: 1;
+      transform: translateY(0);
+      border: 1px solid rgba(36, 36, 36, .08);
+    }
+
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform .7s var(--ease), filter .7s var(--ease);
+    }
+
+    .masonry-item:hover img {
+      transform: scale(1.04);
+      filter: saturate(1.04);
+    }
+
+    .contact-panel {
+      border: 1px solid rgba(255,255,255,.18);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.05)),
+        linear-gradient(180deg, rgba(199,169,123,.18), transparent);
+      box-shadow: 0 30px 80px rgba(0,0,0,.2);
+    }
+
+    .modal {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s var(--ease);
+    }
+
+    .modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      transform: translateY(22px) scale(.98);
+      transition: transform .35s var(--ease);
+    }
+
+    .modal.is-open .modal-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 767px) {
+      .cake-topper {
+        width: min(43vw, 168px);
+      }
+
+      #groomFigure {
+        transform: translate(calc(-50% - 52px), -50%);
+      }
+
+      #brideFigure {
+        transform: translate(calc(-50% + 52px), -50%);
+      }
+
+      .count-cell {
+        min-width: calc(50% - 8px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* ===== МОБИЛЬНЫЕ УЛУЧШЕНИЯ ===== */
+    @media (max-width: 480px) {
+      .hero-info {
+        grid-template-columns: 1fr 1fr;
+        font-size: 0.82rem;
+      }
+      .hero-info > div:last-child {
+        grid-column: 1 / -1;
+      }
+      h1 {
+        font-size: clamp(3.2rem, 18vw, 7rem) !important;
+      }
+      .count-cell {
+        min-width: calc(50% - 8px);
+        padding: 14px 12px;
+      }
+      .count-cell .font-display {
+        font-size: 2.6rem;
+      }
+    }
+
+    /* ===== МЕСТО ВСТРЕЧИ ===== */
+    .venue-map-embed {
+      width: 100%;
+      height: 320px;
+      border: none;
+      border-radius: 8px;
+      filter: grayscale(18%) contrast(1.04);
+    }
+    @media (max-width: 640px) {
+      .venue-map-embed { height: 240px; }
+    }
+
+    .venue-card {
+      border: 1px solid rgba(36,36,36,.11);
+      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.55));
+      box-shadow: 0 18px 60px rgba(40,51,58,.10);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .venue-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 72px rgba(40,51,58,.15);
+    }
+
+    /* ===== ТРЁХДНЕВНОЕ РАСПИСАНИЕ ===== */
+    .day-tab {
+      border: 1px solid rgba(36,36,36,.12);
+      background: rgba(255,255,255,.52);
+      transition: all .35s var(--ease);
+      cursor: pointer;
+    }
+    .day-tab.active {
+      background: #8a4b55;
+      border-color: #8a4b55;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(138,75,85,.28);
+    }
+    .day-panel {
+      display: none;
+    }
+    .day-panel.active {
+      display: block;
+    }
+
+    /* ===== RSVP УЛУЧШЕНИЯ ===== */
+    .allergy-input {
+      min-height: 88px;
+      resize: vertical;
+    }
+
+    /* ===== ТЕЛЕГРАМ УВЕДОМЛЕНИЕ ===== */
+    #tgStatus {
+      transition: opacity .4s var(--ease);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <main>
+    <!-- HERO: полноэкранная обложка с медиа-плейсхолдером -->
+    <section id="hero" class="hero-media relative min-h-[92svh] text-white">
+      <div class="hero-frame hidden sm:block"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,.16),transparent_40%)]"></div>
+      <div class="relative mx-auto flex min-h-[92svh] max-w-7xl flex-col justify-between px-5 py-6 sm:px-8 lg:px-12">
+        <nav class="flex items-center justify-between text-xs uppercase text-white/80">
+          <span>Wedding day</span>
+          <span class="hero-emblem normal-case text-white">A / M</span>
+          <span>21.09.2026</span>
+        </nav>
+
+        <div class="max-w-5xl pb-10 pt-28 sm:pb-14">
+          <p class="section-kicker mb-5 inline-flex border-b border-white/32 pb-2 text-xs text-white/75">Мы женимся</p>
+          <h1 class="font-display text-[clamp(4.5rem,13vw,11rem)] font-semibold leading-[.82] drop-shadow-[0_24px_48px_rgba(0,0,0,.32)]">
+            Александр<br />
+            <span class="pl-[.28em] italic">&amp; Мария</span>
+          </h1>
+          <p class="mt-8 max-w-2xl text-base font-light leading-8 text-white/84 sm:text-lg">
+            Приглашаем вас разделить с нами день, в котором будет много света, нежности,
+            музыки и самых важных слов.
+          </p>
+
+          <!-- Приветственное послание гостям -->
+          <div class="mt-8 max-w-2xl rounded-[8px] border border-white/18 bg-white/10 px-6 py-5 backdrop-blur-sm">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-widest text-white/50">Дорогой гость</p>
+            <p class="font-display text-lg italic leading-8 text-white/90">
+              Мы очень рады пригласить вас на наш праздник. Этот день будет особенным,
+              и нам важно разделить его именно с вами. Приходите с лёгким сердцем —
+              мы позаботимся обо всём остальном.
+            </p>
+            <p class="mt-3 text-sm font-light text-white/60">С любовью, Александр &amp; Мария 🤍</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-5 pb-3 sm:flex-row sm:items-end sm:justify-between">
+          <div class="hero-info grid gap-4 rounded-[8px] px-5 py-4 text-sm text-white/82 sm:grid-cols-3 sm:px-6">
+            <div>
+              <span class="block text-white/48">Дата</span>
+              <strong class="font-display text-xl font-semibold text-white">21 сентября</strong>
+            </div>
+            <div>
+              <span class="block text-white/48">Время</span>
+              <strong class="font-display text-xl font-semibold text-white">16:00</strong>
+            </div>
+            <div>
+              <span class="block text-white/48">Локация</span>
+              <strong class="font-display text-xl font-semibold text-white">Garden Hall</strong>
+            </div>
+          </div>
+
+          <a href="#figurines" class="glass-line group inline-flex h-14 w-14 items-center justify-center rounded-full text-white transition hover:bg-white/24" aria-label="Прокрутить к приглашению">
+            <svg class="h-6 w-6 transition duration-500 group-hover:translate-y-1" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5v14m0 0 6-6m-6 6-6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ФИГУРКИ + ТАЙМЕР: позиция фигурок = прогресс времени до свадьбы -->
+    <section id="figurines" class="noise relative bg-ivory px-5 py-24 sm:px-8 lg:px-12">
+      <div class="mx-auto flex w-full max-w-7xl flex-col items-center gap-0 text-center">
+
+        <!-- Заголовок -->
+        <div class="relative z-10 mx-auto max-w-4xl">
+          <p class="section-kicker mb-4 text-xs text-wine/75">До свадьбы</p>
+          <h2 class="font-display text-5xl leading-tight text-ink sm:text-6xl lg:text-7xl">
+            Ждём этот день вместе.
+          </h2>
+          <p class="mx-auto mt-5 max-w-xl text-base leading-8 text-ink/60">
+            Чем ближе свадьба — тем ближе они друг к другу.
+          </p>
+        </div>
+
+        <!-- Таймер -->
+        <div id="countdown" class="mt-10 flex flex-wrap justify-center gap-3">
+          <div class="count-cell rounded-[8px] px-5 py-4">
+            <div data-time="days" class="font-display text-5xl text-wine">00</div>
+            <div class="mt-1.5 text-xs uppercase text-ink/40">дней</div>
+          </div>
+          <div class="count-cell rounded-[8px] px-5 py-4">
+            <div data-time="hours" class="font-display text-5xl text-wine">00</div>
+            <div class="mt-1.5 text-xs uppercase text-ink/40">часов</div>
+          </div>
+          <div class="count-cell rounded-[8px] px-5 py-4">
+            <div data-time="minutes" class="font-display text-5xl text-wine">00</div>
+            <div class="mt-1.5 text-xs uppercase text-ink/40">минут</div>
+          </div>
+          <div class="count-cell rounded-[8px] px-5 py-4">
+            <div data-time="seconds" class="font-display text-5xl text-wine">00</div>
+            <div class="mt-1.5 text-xs uppercase text-ink/40">секунд</div>
+          </div>
+        </div>
+
+        <!-- Сцена с фигурками -->
+        <div class="figurine-scene relative mt-4 flex min-h-[480px] w-full items-center justify-center sm:min-h-[560px]">
+          <div class="joined-glow absolute h-64 w-64 rounded-full border border-rose/30 bg-white/50 shadow-soft" style="opacity:0;"></div>
+          <div class="cake-base" aria-hidden="true">
+            <div class="cake-tier top"></div>
+            <div class="cake-tier middle"></div>
+            <div class="cake-tier bottom"></div>
+            <div class="cake-ribbon"></div>
+          </div>
+
+          <figure id="groomFigure" class="figurine absolute left-1/2 top-1/2">
+            <div class="cake-topper groom-topper" aria-label="Стилизованная фигурка жениха">
+              <span class="topper-head"></span>
+              <span class="topper-neck"></span>
+              <span class="topper-body"></span>
+              <span class="topper-detail"></span>
+              <span class="cake-topper-shine"></span>
+            </div>
+            <div class="paper-stand"></div>
+          </figure>
+
+          <figure id="brideFigure" class="figurine absolute left-1/2 top-1/2">
+            <div class="cake-topper bride-topper" aria-label="Стилизованная фигурка невесты">
+              <span class="topper-head"></span>
+              <span class="topper-neck"></span>
+              <span class="topper-body"></span>
+              <span class="topper-detail"></span>
+              <span class="cake-topper-shine"></span>
+            </div>
+            <div class="paper-stand"></div>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ИСТОРИЯ ПАРЫ -->
+    <section class="noise bg-[#F3ECE7] px-5 py-24 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-16 max-w-2xl">
+          <p class="section-kicker mb-4 text-xs text-wine/75">Our story</p>
+          <h2 class="font-display text-4xl text-ink sm:text-6xl">История нас двоих</h2>
+          <p class="mt-5 text-base leading-8 text-ink/60">Каждая большая история начинается с маленькой случайности.</p>
+        </div>
+
+        <div class="relative">
+          <!-- Вертикальная линия таймлайна -->
+          <div class="absolute left-5 top-0 h-full w-px bg-gradient-to-b from-wine/30 via-wine/20 to-transparent sm:left-8 lg:left-1/2 lg:-translate-x-1/2"></div>
+
+          <div class="grid gap-0">
+
+            <!-- Момент 1 -->
+            <div class="story-moment relative grid gap-6 pb-16 lg:grid-cols-2 lg:items-center lg:gap-16">
+              <div class="pl-12 sm:pl-16 lg:pl-0 lg:pr-16 lg:text-right">
+                <span class="mb-3 inline-block rounded-full border border-wine/25 bg-white px-4 py-1.5 font-display text-sm italic text-wine">2018</span>
+                <h3 class="font-display text-2xl text-ink sm:text-3xl">Первая встреча</h3>
+                <p class="mt-3 text-base leading-8 text-ink/62">
+                  Мы встретились совершенно случайно на общей вечеринке у друзей. Александр подошёл первым — и уже через час мы говорили так, будто знали друг друга всю жизнь.
+                </p>
+              </div>
+              <!-- Точка на линии -->
+              <div class="absolute left-3 top-1 h-5 w-5 rounded-full border-2 border-wine bg-[#F3ECE7] sm:left-6 lg:left-1/2 lg:-translate-x-1/2"></div>
+              <div class="hidden lg:block"></div>
+            </div>
+
+            <!-- Момент 2 -->
+            <div class="story-moment relative grid gap-6 pb-16 lg:grid-cols-2 lg:items-center lg:gap-16">
+              <div class="hidden lg:block"></div>
+              <!-- Точка на линии -->
+              <div class="absolute left-3 top-1 h-5 w-5 rounded-full border-2 border-wine bg-[#F3ECE7] sm:left-6 lg:left-1/2 lg:-translate-x-1/2"></div>
+              <div class="pl-12 sm:pl-16 lg:pl-16">
+                <span class="mb-3 inline-block rounded-full border border-wine/25 bg-white px-4 py-1.5 font-display text-sm italic text-wine">2020</span>
+                <h3 class="font-display text-2xl text-ink sm:text-3xl">Первое путешествие</h3>
+                <p class="mt-3 text-base leading-8 text-ink/62">
+                  Поездка на море стала нашим первым большим приключением вдвоём. Именно там мы поняли, что хотим открывать мир только вместе.
+                </p>
+              </div>
+            </div>
+
+            <!-- Момент 3 -->
+            <div class="story-moment relative grid gap-6 pb-16 lg:grid-cols-2 lg:items-center lg:gap-16">
+              <div class="pl-12 sm:pl-16 lg:pl-0 lg:pr-16 lg:text-right">
+                <span class="mb-3 inline-block rounded-full border border-wine/25 bg-white px-4 py-1.5 font-display text-sm italic text-wine">2023</span>
+                <h3 class="font-display text-2xl text-ink sm:text-3xl">Предложение</h3>
+                <p class="mt-3 text-base leading-8 text-ink/62">
+                  Александр сделал предложение в тот самый день, когда мы впервые встретились — пять лет спустя, в том же месте. Мария сказала «да» ещё до того, как он договорил.
+                </p>
+              </div>
+              <div class="absolute left-3 top-1 h-5 w-5 rounded-full border-2 border-wine bg-[#F3ECE7] sm:left-6 lg:left-1/2 lg:-translate-x-1/2"></div>
+              <div class="hidden lg:block"></div>
+            </div>
+
+            <!-- Момент 4 — финал -->
+            <div class="story-moment relative grid gap-6 lg:grid-cols-2 lg:items-center lg:gap-16">
+              <div class="hidden lg:block"></div>
+              <div class="absolute left-3 top-1 h-5 w-5 rounded-full border-2 border-white bg-wine shadow-[0_0_0_6px_rgba(138,75,85,.18)] sm:left-6 lg:left-1/2 lg:-translate-x-1/2"></div>
+              <div class="pl-12 sm:pl-16 lg:pl-16">
+                <span class="mb-3 inline-block rounded-full bg-wine px-4 py-1.5 font-display text-sm italic text-white">21 сентября 2026</span>
+                <h3 class="font-display text-2xl text-ink sm:text-3xl">Свадьба</h3>
+                <p class="mt-3 text-base leading-8 text-ink/62">
+                  Следующая глава нашей истории — и мы очень рады, что вы будете рядом, когда она начнётся.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- МЕСТО ВСТРЕЧИ -->
+    <section id="venue" class="bg-ivory px-5 py-20 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10">
+          <p class="section-kicker mb-4 text-xs text-wine/75">Venue</p>
+          <h2 class="font-display text-4xl text-ink sm:text-6xl">Как добраться</h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2 lg:items-center">
+
+          <!-- Адрес + дата + кнопка -->
+          <div class="luxury-panel rounded-[8px] p-8 sm:p-10">
+            <div class="mb-8 border-b border-ink/10 pb-8">
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-wine/70">Адрес</p>
+              <p class="font-display text-3xl text-ink sm:text-4xl">Garden Hall</p>
+              <p class="mt-2 text-base text-ink/60">ул. Садовая, 12, Москва</p>
+            </div>
+
+            <div class="mb-8 border-b border-ink/10 pb-8">
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-wine/70">Дата и время</p>
+              <p class="font-display text-3xl text-ink sm:text-4xl">21–23 сентября 2026</p>
+              <p class="mt-2 text-base text-ink/60">Начало в 16:00 · Сбор гостей с 15:30</p>
+            </div>
+
+            <a href="https://maps.google.com/?q=Garden+Hall+Москва" target="_blank" rel="noreferrer"
+               class="soft-button inline-flex h-14 w-full items-center justify-center gap-3 rounded-[8px] bg-ink text-sm font-semibold uppercase text-white transition hover:bg-wine sm:w-auto sm:px-10">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              Открыть на карте
+            </a>
+          </div>
+
+          <!-- Встроенная карта -->
+          <div class="overflow-hidden rounded-[8px] border border-ink/10 shadow-soft">
+            <iframe
+              class="venue-map-embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.4086!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIxLjAiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1700000000"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Карта места проведения свадьбы"
+            ></iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРИГЛАШЕНИЕ И RSVP -->
+    <section class="bg-ivory px-5 py-24 sm:px-8 lg:px-12">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+        <div class="luxury-panel rounded-[8px] p-6 sm:p-8">
+          <p class="section-kicker mb-4 text-xs text-wine/75">Дорогие гости</p>
+          <h2 class="font-display text-4xl leading-tight text-ink sm:text-6xl">Будем счастливы видеть вас рядом</h2>
+          <p class="mt-7 text-base leading-8 text-ink/68">
+            В этот день мы хотим собрать самых близких людей, чтобы сказать друг другу
+            главное и прожить вечер, который станет теплым воспоминанием для всех нас.
+            Пожалуйста, подтвердите присутствие до 1 сентября.
+          </p>
+          <p class="mt-5 font-display text-2xl italic text-wine">С любовью, Александр и Мария</p>
+          <div class="mt-8 overflow-hidden rounded-[8px]">
+            <img class="h-72 w-full object-cover" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=82" alt="Атмосферный свадебный декор" />
+          </div>
+        </div>
+
+        <form id="rsvpForm" class="luxury-panel rounded-[8px] p-5 backdrop-blur sm:p-8">
+          <div class="grid gap-6">
+            <label class="grid gap-2">
+              <span class="text-sm font-medium text-ink/70">Ваше имя</span>
+              <input required name="guestName" type="text" placeholder="Например, Анна Иванова" class="h-[52px] rounded-[8px] border border-ink/12 bg-white px-4 py-3 outline-none transition focus:border-wine" />
+            </label>
+
+            <fieldset>
+              <legend class="mb-3 text-sm font-medium text-ink/70">Будете ли вы?</legend>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <label class="rsvp-choice relative cursor-pointer">
+                  <input checked type="radio" name="attendance" value="Буду с радостью" />
+                  <span class="rounded-[8px]">Буду с радостью</span>
+                </label>
+                <label class="rsvp-choice relative cursor-pointer">
+                  <input type="radio" name="attendance" value="Не смогу прийти" />
+                  <span class="rounded-[8px]">Не смогу прийти</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="mb-3 text-sm font-medium text-ink/70">Предпочтения по алкоголю</legend>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <label class="drink-choice relative cursor-pointer">
+                  <input checked type="radio" name="drink" value="Игристое шампанское" />
+                  <span class="rounded-[8px]">🥂 Игристое</span>
+                </label>
+                <label class="drink-choice relative cursor-pointer">
+                  <input type="radio" name="drink" value="Красное вино" />
+                  <span class="rounded-[8px]">🍷 Красное вино</span>
+                </label>
+                <label class="drink-choice relative cursor-pointer">
+                  <input type="radio" name="drink" value="Белое вино" />
+                  <span class="rounded-[8px]">🥃 Белое вино</span>
+                </label>
+                <label class="drink-choice relative cursor-pointer">
+                  <input type="radio" name="drink" value="Виски / коньяк" />
+                  <span class="rounded-[8px]">🥃 Виски / коньяк</span>
+                </label>
+                <label class="drink-choice relative cursor-pointer">
+                  <input type="radio" name="drink" value="Пиво" />
+                  <span class="rounded-[8px]">🍺 Пиво</span>
+                </label>
+                <label class="drink-choice relative cursor-pointer">
+                  <input type="radio" name="drink" value="Безалкогольное" />
+                  <span class="rounded-[8px]">🧃 Безалкогольное</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label class="grid gap-2">
+              <span class="text-sm font-medium text-ink/70">Аллергии и пищевые ограничения</span>
+              <textarea
+                name="allergies"
+                placeholder="Например: орехи, лактоза, глютен, вегетарианец... или оставьте пустым"
+                class="allergy-input rounded-[8px] border border-ink/12 bg-white px-4 py-3 text-sm outline-none transition focus:border-wine"
+              ></textarea>
+            </label>
+
+            <button type="submit" id="rsvpSubmitBtn" class="soft-button inline-flex h-14 items-center justify-center gap-2 rounded-[8px] bg-ink px-6 text-sm font-semibold uppercase text-white transition hover:bg-wine">
+              <span id="rsvpBtnText">Подтвердить</span>
+              <svg id="rsvpSpinner" class="hidden h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.5" stroke-dasharray="31.4" stroke-dashoffset="10" opacity=".4"/>
+                <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <p id="rsvpMessage" class="min-h-6 text-sm text-wine"></p>
+            <p id="tgStatus" class="hidden min-h-5 text-xs text-ink/45">📨 Ответ отправлен организаторам в Telegram</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ДРЕСС-КОД -->
+    <section class="noise bg-[#F3ECE7] px-5 py-24 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl">
+          <p class="section-kicker mb-4 text-xs text-wine/75">Dress code</p>
+          <h2 class="font-display text-4xl text-ink sm:text-6xl">Мягкая классика и природные оттенки</h2>
+          <p class="mt-6 text-base leading-8 text-ink/68">
+            Будем благодарны, если вы поддержите атмосферу вечера: легкие ткани,
+            лаконичные силуэты, приглушенные оттенки сада на закате.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div class="palette-card rounded-[8px] border border-ink/10 bg-white/58 p-5">
+            <span class="block h-28 rounded-[8px] bg-[#E7D8CA]"></span>
+            <p class="mt-4 text-sm font-medium">Champagne</p>
+          </div>
+          <div class="palette-card rounded-[8px] border border-ink/10 bg-white/58 p-5">
+            <span class="block h-28 rounded-[8px] bg-[#AEB8A2]"></span>
+            <p class="mt-4 text-sm font-medium">Soft sage</p>
+          </div>
+          <div class="palette-card rounded-[8px] border border-ink/10 bg-white/58 p-5">
+            <span class="block h-28 rounded-[8px] bg-[#D7A9A1]"></span>
+            <p class="mt-4 text-sm font-medium">Dusty rose</p>
+          </div>
+          <div class="palette-card rounded-[8px] border border-ink/10 bg-white/58 p-5">
+            <span class="block h-28 rounded-[8px] bg-[#B9BDC8]"></span>
+            <p class="mt-4 text-sm font-medium">Misty blue</p>
+          </div>
+          <div class="palette-card rounded-[8px] border border-ink/10 bg-white/58 p-5">
+            <span class="block h-28 rounded-[8px] bg-[#363B36]"></span>
+            <p class="mt-4 text-sm font-medium">Deep olive</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ТАЙМЛАЙН 3 ДНЯ -->
+    <section class="bg-ivory px-5 py-20 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div>
+            <p class="section-kicker mb-4 text-xs text-wine/75">План</p>
+            <h2 class="font-display text-4xl text-ink sm:text-6xl">Расписание на 3 дня</h2>
+          </div>
+          <p id="timelineText" class="max-w-xl text-base leading-8 text-ink/68">
+            Нажмите на событие, чтобы увидеть подробности о каждом моменте.
+          </p>
+        </div>
+
+        <!-- Табы дней -->
+        <div class="mt-10 flex flex-wrap gap-3">
+          <button class="day-tab active rounded-[8px] px-6 py-3 text-sm font-semibold uppercase" data-day="1">
+            День 1 · 21 сентября
+          </button>
+          <button class="day-tab rounded-[8px] px-6 py-3 text-sm font-semibold uppercase" data-day="2">
+            День 2 · 22 сентября
+          </button>
+          <button class="day-tab rounded-[8px] px-6 py-3 text-sm font-semibold uppercase" data-day="3">
+            День 3 · 23 сентября
+          </button>
+        </div>
+
+        <!-- День 1 -->
+        <div class="day-panel active mt-8" id="day1">
+          <div class="timeline-grid grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+            <button class="timeline-item is-active rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Приезжайте чуть заранее: будет welcome-зона, лёгкие напитки и первые фотографии.">
+              <span class="font-display text-3xl text-wine">15:30</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Сбор гостей</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Торжественная церемония пройдёт на открытой площадке у сада.">
+              <span class="font-display text-3xl text-wine">16:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Церемония</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Фотосессия на территории: природный свет, сад, живые цветы.">
+              <span class="font-display text-3xl text-wine">17:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Фотосессия</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Ужин, тосты, уютные разговоры и первая музыкальная пауза.">
+              <span class="font-display text-3xl text-wine">17:30</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Банкет</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Сладкий момент вечера и небольшая фотопауза для всех желающих.">
+              <span class="font-display text-3xl text-wine">20:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Торт</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Финальные объятия, огни, живая музыка и красивое завершение первого вечера.">
+              <span class="font-display text-3xl text-wine">23:30</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Финал дня</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- День 2 -->
+        <div class="day-panel mt-8" id="day2">
+          <div class="timeline-grid grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            <button class="timeline-item is-active rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Неспешный бранч на свежем воздухе с живой музыкой и тёплым общением.">
+              <span class="font-display text-3xl text-wine">11:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Бранч</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Командные игры, квесты и активности на природе для гостей всех возрастов.">
+              <span class="font-display text-3xl text-wine">13:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Активности</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Свободное время, прогулки, отдых, купание — для тех, кто хочет расслабиться.">
+              <span class="font-display text-3xl text-wine">15:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Свободное время</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Вечерний ужин с особой атмосферой — теплые тосты, истории и воспоминания.">
+              <span class="font-display text-3xl text-wine">19:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Ужин</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Живая музыка и танцы под открытым небом — вечеринка до поздней ночи.">
+              <span class="font-display text-3xl text-wine">21:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Вечеринка</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- День 3 -->
+        <div class="day-panel mt-8" id="day3">
+          <div class="timeline-grid grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <button class="timeline-item is-active rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Утренний кофе и завтрак для всех гостей перед отъездом.">
+              <span class="font-display text-3xl text-wine">10:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Завтрак</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Прощальное фото всей компанией — главный снимок, который останется на память.">
+              <span class="font-display text-3xl text-wine">11:30</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Общее фото</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Тёплые прощания, объятия и обмен контактами — мы теперь одна большая семья.">
+              <span class="font-display text-3xl text-wine">12:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Прощание</span>
+            </button>
+            <button class="timeline-item rounded-[8px] border border-ink/10 bg-white/62 p-5 text-left" data-detail="Трансфер для гостей до ж/д и аэропорта организован заранее. Уточните у организатора.">
+              <span class="font-display text-3xl text-wine">13:00</span>
+              <span class="mt-4 block text-sm font-semibold uppercase">Разъезд</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЖИВАЯ ГАЛЕРЕЯ -->
+    <section class="noise bg-[#EEF1EA] px-5 py-20 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div>
+            <p class="section-kicker mb-4 text-xs text-wine/75">Live wall</p>
+            <h2 class="font-display text-4xl text-ink sm:text-6xl">Снимки гостей</h2>
+          </div>
+          <button id="openUpload" class="soft-button inline-flex h-14 items-center justify-center rounded-[8px] bg-wine px-6 text-sm font-semibold uppercase text-white transition hover:bg-ink">
+            Загрузить фото
+          </button>
+        </div>
+
+        <div id="gallery" class="masonry mt-12">
+
+          <!-- Заглушка 1 — высокая -->
+          <figure class="masonry-item rounded-[8px] shadow-soft" style="min-height:320px;">
+            <div style="min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(145deg,#f5ede8,#ede4dc);padding:32px;">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="26" cy="20" r="10" stroke="#8a4b55" stroke-width="1.6" fill="none" opacity=".5"/>
+                <path d="M8 46c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#8a4b55" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".5"/>
+              </svg>
+              <span style="font-family:'Playfair Display',serif;font-size:1.05rem;color:#8a4b55;opacity:.7;text-align:center;">Ваше фото<br/>появится здесь</span>
+              <span style="font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(36,36,36,.38);">Загрузите снимок →</span>
+            </div>
+          </figure>
+
+          <!-- Заглушка 2 — квадратная -->
+          <figure class="masonry-item rounded-[8px] shadow-soft" style="min-height:220px;">
+            <div style="min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(145deg,#edf0ea,#e4ece0);padding:28px;">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <rect x="6" y="10" width="32" height="24" rx="4" stroke="#aeb8a2" stroke-width="1.6" fill="none"/>
+                <circle cx="22" cy="22" r="6" stroke="#aeb8a2" stroke-width="1.6" fill="none"/>
+                <circle cx="34" cy="14" r="2" fill="#aeb8a2" opacity=".6"/>
+              </svg>
+              <span style="font-family:'Playfair Display',serif;font-size:.95rem;color:#6e7d67;opacity:.8;text-align:center;">Фото с праздника</span>
+            </div>
+          </figure>
+
+          <!-- Заглушка 3 — высокая -->
+          <figure class="masonry-item rounded-[8px] shadow-soft" style="min-height:280px;">
+            <div style="min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(145deg,#f0e8ec,#e8dce2);padding:32px;">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 4l4.5 9 10 1.5-7.25 7 1.75 10L24 27l-9 4.5 1.75-10L9.5 14.5 19.5 13z" stroke="#d7a9a1" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+              </svg>
+              <span style="font-family:'Playfair Display',serif;font-size:1rem;color:#8a4b55;opacity:.65;text-align:center;">Особенный момент</span>
+            </div>
+          </figure>
+
+          <!-- Заглушка 4 — широкая -->
+          <figure class="masonry-item rounded-[8px] shadow-soft" style="min-height:200px;">
+            <div style="min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(145deg,#f0ece6,#e8e2d8);padding:28px;">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <circle cx="22" cy="16" r="7" stroke="#c7a97b" stroke-width="1.6" fill="none"/>
+                <path d="M22 25c-7.732 0-14 4.268-14 9.5" stroke="#c7a97b" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                <path d="M22 25c7.732 0 14 4.268 14 9.5" stroke="#c7a97b" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span style="font-family:'Playfair Display',serif;font-size:.92rem;color:#8a6a40;opacity:.72;text-align:center;">Гость вечера</span>
+            </div>
+          </figure>
+
+          <!-- Заглушка 5 — высокая -->
+          <figure class="masonry-item rounded-[8px] shadow-soft" style="min-height:300px;">
+            <div style="min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(145deg,#e8ecf0,#dce2e8);padding:32px;">
+              <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <path d="M25 8C15.6 8 8 15.6 8 25s7.6 17 17 17 17-7.6 17-17S34.4 8 25 8z" stroke="#b9bdc8" stroke-width="1.6" fill="none"/>
+                <path d="M17 32c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#b9bdc8" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                <circle cx="25" cy="20" r="4" stroke="#b9bdc8" stroke-width="1.6" fill="none"/>
+              </svg>
+              <span style="font-family:'Playfair Display',serif;font-size:1rem;color:#5a6070;opacity:.7;text-align:center;">Ждём ваши<br/>воспоминания</span>
+            </div>
+          </figure>
+
+          <!-- Заглушка 6 — квадратная -->
+          <figure class="masonry-item rounded-[8px] shadow-soft" style="min-height:240px;">
+            <div style="min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(145deg,#f5f0e8,#ede8dc);padding:28px;">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <path d="M22 6v32M6 22h32" stroke="#c7a97b" stroke-width="1.6" stroke-linecap="round" opacity=".4"/>
+                <rect x="10" y="10" width="24" height="24" rx="4" stroke="#c7a97b" stroke-width="1.6" fill="none" opacity=".35"/>
+              </svg>
+              <span style="font-family:'Playfair Display',serif;font-size:.92rem;color:#8a6a40;opacity:.65;text-align:center;">Добавить фото</span>
+              <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(36,36,36,.35);">Нажмите кнопку выше</span>
+            </div>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ ОРГАНИЗАТОРА -->
+    <section class="relative overflow-hidden bg-ink px-5 py-20 text-white sm:px-8 lg:px-12">
+      <div class="absolute inset-0 opacity-28" style="background-image: url('https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=2200&q=80'); background-size: cover; background-position: center;"></div>
+      <div class="absolute inset-0 bg-ink/80"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+        <div>
+          <p class="section-kicker mb-4 text-xs text-white/62">Для тайных идей</p>
+          <h2 class="font-display text-4xl text-white sm:text-6xl">Готовите сюрприз?</h2>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-white/72">
+            Если вы планируете подарок, выступление или особенный момент, свяжитесь
+            с организатором. Она поможет вписать сюрприз в программу так, чтобы для нас
+            это осталось настоящей неожиданностью.
+          </p>
+        </div>
+
+        <div class="contact-panel rounded-[8px] p-6 backdrop-blur">
+          <p class="font-display text-3xl">Екатерина Орлова</p>
+          <p class="mt-2 text-sm uppercase text-white/55">Wedding planner</p>
+          <div class="mt-7 grid gap-3">
+            <a href="tel:+79990000000" class="rounded-[8px] border border-white/18 px-4 py-4 transition hover:bg-white hover:text-ink">+7 999 000-00-00</a>
+            <a href="https://t.me/example_wedding_planner" target="_blank" rel="noreferrer" class="rounded-[8px] border border-white/18 px-4 py-4 transition hover:bg-white hover:text-ink">Telegram: @example_wedding_planner</a>
+            <a href="https://wa.me/79990000000" target="_blank" rel="noreferrer" class="rounded-[8px] border border-white/18 px-4 py-4 transition hover:bg-white hover:text-ink">WhatsApp для координации</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Модальное окно загрузки фото -->
+  <div id="uploadModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-ink/58 p-5 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+    <div class="modal-panel w-full max-w-lg rounded-[8px] bg-ivory p-6 shadow-lift sm:p-8">
+      <div class="flex items-start justify-between gap-6">
+        <div>
+          <p class="section-kicker mb-3 text-xs text-wine/75">Live wall</p>
+          <h3 id="uploadTitle" class="font-display text-3xl text-ink">Добавить фото</h3>
+        </div>
+        <button id="closeUpload" class="grid h-10 w-10 place-items-center rounded-full border border-ink/12 text-ink/70 transition hover:bg-ink hover:text-white" aria-label="Закрыть окно">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <label class="mt-7 flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-[8px] border border-dashed border-wine/45 bg-white/58 p-6 text-center transition hover:bg-white">
+        <input id="photoInput" type="file" accept="image/*" class="sr-only" />
+        <span class="font-medium text-ink">Выберите снимок с устройства</span>
+        <span class="mt-2 text-sm leading-6 text-ink/58">Фото появится первым в галерее сразу после выбора файла.</span>
+      </label>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // ================================================================
+    // НАСТРОЙКИ — ЗАМЕНИТЕ НА СВОИ ДАННЫЕ
+    // ================================================================
+    const weddingDate = new Date('2026-09-21T16:00:00+03:00');
+
+    // Telegram: создайте бота через @BotFather, получите токен.
+    // Chat ID: напишите боту /start, затем узнайте ID через @userinfobot
+    const TG_BOT_TOKEN = 'YOUR_BOT_TOKEN';   // 👈 замените
+    const TG_CHAT_ID   = 'YOUR_CHAT_ID';     // 👈 замените
+    // ================================================================
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ─── ФИГУРКИ + ТАЙМЕР: позиция определяется временем до свадьбы ──────────
+    // Логика: вычисляем прогресс от «дата публикации сайта» до даты свадьбы.
+    // progress=0 → фигурки далеко друг от друга; progress=1 (00:00:00) → рядом.
+    // Каждую секунду таймер обновляется и фигурки плавно подвигаются.
+
+    // Дата, от которой считается прогресс (когда сайт запущен / приглашения разосланы).
+    // Измените на реальную дату запуска сайта.
+    const siteStartDate  = new Date('2026-06-01T00:00:00+03:00');
+    const totalMs        = weddingDate - siteStartDate; // полный диапазон
+
+    function initFigurinesAndCountdown() {
+      const isMobile   = window.matchMedia('(max-width: 767px)').matches;
+      const startOffset = Math.min(window.innerWidth * 0.34, 420); // макс. расстояние от центра
+      const finalGap    = isMobile ? 52 : 86;                       // расстояние в финале
+
+      const groomEl  = document.getElementById('groomFigure');
+      const brideEl  = document.getElementById('brideFigure');
+      const glowEl   = document.querySelector('.joined-glow');
+
+      const cells = {
+        days:    document.querySelector('[data-time="days"]'),
+        hours:   document.querySelector('[data-time="hours"]'),
+        minutes: document.querySelector('[data-time="minutes"]'),
+        seconds: document.querySelector('[data-time="seconds"]'),
+      };
+
+      // Применяем позицию фигурок напрямую через CSS transform,
+      // используя linear-interpolation между start и final состоянием.
+      function applyProgress(p) {
+        // p: 0 = далеко, 1 = рядом
+        const clamp = Math.min(1, Math.max(0, p));
+
+        const groomX   = -(startOffset * (1 - clamp) + finalGap * clamp);
+        const brideX   =  (startOffset * (1 - clamp) + finalGap * clamp);
+        const rotateY  = 36 * (1 - clamp);  // 36° → 0°
+        const rotateZ  = 4  * (1 - clamp);  //  4° → 0°
+        const scale    = 0.94 + 0.09 * clamp;
+        const zVal     = -80 + 116 * clamp;
+        const glowOp   = clamp > 0.34 ? (clamp - 0.34) / 0.66 : 0;
+        const shadowA  = 0.18 + 0.04 * clamp;
+
+        const sharedTransition = prefersReducedMotion ? 'none' : 'transform 0.9s cubic-bezier(.22,1,.36,1), filter 0.9s cubic-bezier(.22,1,.36,1)';
+
+        groomEl.style.transition = sharedTransition;
+        brideEl.style.transition = sharedTransition;
+
+        groomEl.style.transform = `translate(calc(-50% + ${groomX}px), -50%) perspective(1400px) rotateY(${-rotateY}deg) rotateZ(${-rotateZ}deg) translateZ(${zVal}px) scale(${scale})`;
+        brideEl.style.transform = `translate(calc(-50% + ${brideX}px), -50%) perspective(1400px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) translateZ(${zVal}px) scale(${scale})`;
+
+        groomEl.style.filter = `drop-shadow(0 ${26 + 8*clamp}px ${24 + 8*clamp}px rgba(36,36,36,${shadowA}))`;
+        brideEl.style.filter = groomEl.style.filter;
+
+        glowEl.style.transition = prefersReducedMotion ? 'none' : 'opacity 1.2s ease, transform 1.2s ease';
+        glowEl.style.opacity    = glowOp.toFixed(3);
+        glowEl.style.transform  = `scale(${1 + 0.18 * clamp})`;
+      }
+
+      function tick() {
+        const now  = new Date();
+        const diff = Math.max(weddingDate - now, 0);
+        const elapsed = Math.max(now - siteStartDate, 0);
+        const progress = totalMs > 0 ? elapsed / totalMs : 1;
+
+        // Обновляем цифры таймера
+        cells.days.textContent    = String(Math.floor(diff / 86400000)).padStart(2, '0');
+        cells.hours.textContent   = String(Math.floor(diff / 3600000 % 24)).padStart(2, '0');
+        cells.minutes.textContent = String(Math.floor(diff / 60000 % 60)).padStart(2, '0');
+        cells.seconds.textContent = String(Math.floor(diff / 1000 % 60)).padStart(2, '0');
+
+        // Двигаем фигурки
+        applyProgress(progress);
+
+        // Когда время вышло — финальное состояние + пульсация glow
+        if (diff === 0 && !prefersReducedMotion) {
+          glowEl.style.animation = 'glowPulse 2.4s ease-in-out infinite';
+        }
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    // Пульсация ореола в финале
+    const glowStyle = document.createElement('style');
+    glowStyle.textContent = `
+      @keyframes glowPulse {
+        0%, 100% { transform: scale(1.18); opacity: 0.9; }
+        50%       { transform: scale(1.30); opacity: 0.6; }
+      }
+    `;
+    document.head.appendChild(glowStyle);
+
+
+    // RSVP с отправкой в Telegram
+    function initRsvpForm() {
+      const form      = document.querySelector('#rsvpForm');
+      const message   = document.querySelector('#rsvpMessage');
+      const tgStatus  = document.querySelector('#tgStatus');
+      const submitBtn = document.querySelector('#rsvpSubmitBtn');
+      const btnText   = document.querySelector('#rsvpBtnText');
+      const spinner   = document.querySelector('#rsvpSpinner');
+
+      async function sendToTelegram(data) {
+        const text = [
+          '💌 *Новый ответ на приглашение*',
+          '',
+          `👤 *Имя:* ${data.name}`,
+          `✅ *Присутствие:* ${data.attendance}`,
+          `🍷 *Алкоголь:* ${data.drink}`,
+          `🌿 *Аллергии/ограничения:* ${data.allergies || 'не указано'}`,
+          '',
+          `🕐 ${new Date().toLocaleString('ru-RU')}`,
+        ].join('\n');
+
+        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            text,
+            parse_mode: 'Markdown',
+          }),
+        });
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData   = new FormData(form);
+        const name       = formData.get('guestName').trim();
+        const attendance = formData.get('attendance');
+        const drink      = formData.get('drink');
+        const allergies  = formData.get('allergies').trim();
+
+        // UI: загрузка
+        submitBtn.disabled = true;
+        btnText.textContent = 'Отправляем...';
+        spinner.classList.remove('hidden');
+
+        try {
+          await sendToTelegram({ name, attendance, drink, allergies });
+          tgStatus.classList.remove('hidden');
+        } catch (e) {
+          console.warn('Telegram не отвечает — проверьте токен и chat_id', e);
+        }
+
+        // Сообщение гостю
+        message.textContent = attendance.includes('Не смогу')
+          ? `${name}, спасибо, что сообщили. Мы будем мысленно обнимать вас в этот день.`
+          : `${name}, подтверждение принято! Напиток: ${drink}. Ждём вас на свадьбе 🤍`;
+
+        if (!prefersReducedMotion && window.gsap) {
+          gsap.fromTo(message, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .45, ease: 'power2.out' });
+        }
+
+        submitBtn.disabled = false;
+        btnText.textContent = 'Подтверждено ✓';
+        spinner.classList.add('hidden');
+      });
+    }
+
+    // Таймлайн — интерактивные подсказки
+    function initTimeline() {
+      const text = document.querySelector('#timelineText');
+
+      function attachItemListeners(container) {
+        const items = container.querySelectorAll('.timeline-item');
+        items.forEach((item) => {
+          item.addEventListener('click', () => {
+            items.forEach((b) => b.classList.remove('is-active'));
+            item.classList.add('is-active');
+            text.textContent = item.dataset.detail;
+            if (!prefersReducedMotion && window.gsap) {
+              gsap.fromTo(text, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .35, ease: 'power2.out' });
+            }
+          });
+        });
+      }
+
+      document.querySelectorAll('.day-panel').forEach(attachItemListeners);
+    }
+
+    // 3-дневные табы
+    function initDayTabs() {
+      const tabs   = document.querySelectorAll('.day-tab');
+      const panels = document.querySelectorAll('.day-panel');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const day = tab.dataset.day;
+
+          tabs.forEach((t) => t.classList.remove('active'));
+          panels.forEach((p) => p.classList.remove('active'));
+
+          tab.classList.add('active');
+          document.getElementById(`day${day}`).classList.add('active');
+        });
+      });
+    }
+
+    // Галерея
+    function initGalleryUpload() {
+      const modal       = document.querySelector('#uploadModal');
+      const openButton  = document.querySelector('#openUpload');
+      const closeButton = document.querySelector('#closeUpload');
+      const input       = document.querySelector('#photoInput');
+      const gallery     = document.querySelector('#gallery');
+
+      function openModal()  { modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+      function closeModal() { modal.classList.remove('is-open'); document.body.style.overflow = ''; input.value = ''; }
+
+      function prependImage(src) {
+        const figure = document.createElement('figure');
+        figure.className = 'masonry-item rounded-[8px] shadow-soft';
+        figure.innerHTML = `<img src="${src}" alt="Фото гостя" />`;
+        gallery.prepend(figure);
+        if (!prefersReducedMotion && window.gsap) {
+          gsap.fromTo(figure, { opacity: 0, y: 28, scale: .96 }, { opacity: 1, y: 0, scale: 1, duration: .65, ease: 'power3.out' });
+        }
+      }
+
+      openButton.addEventListener('click', openModal);
+      closeButton.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+      input.addEventListener('change', () => {
+        const file = input.files?.[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = (e) => { prependImage(e.target.result); closeModal(); };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Анимация появления секций
+    function initRevealAnimation() {
+      if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray('section').forEach((section) => {
+        gsap.from(section.querySelectorAll('h2, p, form, .count-cell, .timeline-item, .masonry-item, .venue-card'), {
+          scrollTrigger: { trigger: section, start: 'top 78%', once: true },
+          y: 24,
+          opacity: 0,
+          duration: .8,
+          ease: 'power3.out',
+          stagger: .05,
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initFigurineAnimation();
+      initCountdown();
+      initRsvpForm();
+      initDayTabs();
+      initTimeline();
+      initGalleryUpload();
+      initRevealAnimation();
+    });
+  </script>
+</body>
+</html>
